@@ -56,13 +56,35 @@ function App() {
   }
 
   return (
-    <div>
-      <input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="username" />
-      <div>
-        <button onClick={register}>Register</button>
-        <button onClick={authenticate}>Authenticate</button>
+    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col items-center justify-center p-6">
+      <div className="w-full max-w-md bg-zinc-900/70 p-5 rounded-xl">
+        <h1 className="text-3xl font-semibold tracking-tight mb-4">Passkey Demo</h1>
+        <div className="space-y-3">
+          <input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="username"
+            className="w-full rounded-lg bg-zinc-800 border border-zinc-700 px-4 py-2 text-zinc-100 placeholder-zinc-500 outline-none focus:border-zinc-600 focus:bg-zinc-700/50"
+          />
+          <div className="flex gap-3">
+            <button
+              onClick={register}
+              className="flex-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 hover:scale-[1.02] active:scale-95 border border-zinc-700 px-4 py-2 font-medium text-zinc-100 transition-all cursor-pointer"
+            >
+              Register
+            </button>
+            <button
+              onClick={authenticate}
+              className="flex-1 rounded-lg bg-white text-zinc-900 hover:bg-zinc-200 hover:scale-[1.02] active:scale-95 transition-all px-4 py-2 font-semibold cursor-pointer"
+            >
+              Authenticate
+            </button>
+          </div>
+        </div>
+        {msg && (
+            <span className='mt-6 block text-center'>{msg}</span>
+        )}
       </div>
-      {msg && <p>{msg}</p>}
     </div>
   )
 }
